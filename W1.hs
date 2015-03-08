@@ -9,24 +9,29 @@ module W1 where
 -- Ex 1: define variables one, two and three. They should all have
 -- type Int and values 1, 2 and 3. This exercise has no tests.
 
+one = 1
+two = 2
+three = 3
+
 -- Ex 2: define the function double of type Integer->Integer. Double
 -- should take one argument and return it multiplied by two.
 
 double :: Integer -> Integer
-double x = undefined
+double x = x * 2
 
 -- Ex 3: define the function quadruple that uses the function double
 -- from the previous exercise to return its argument multiplied by
 -- four.
 
 quadruple :: Integer -> Integer
-quadruple x = undefined
+quadruple x = double (double x)
 
 -- Ex 4: define the function poly2. It should take four arguments of
 -- type Double, a, b, c, and x and return a*x^2+b*x+c. Give poly2 a
 -- type signature, i.e. poly2 :: something.
 
-poly2 = undefined
+poly2 :: Double -> Double -> Double -> Double -> Double
+poly2 a b c x = a*x^2+b*x+c
 
 -- Ex 5: define the function eeny that returns "eeny" for even inputs
 -- and "meeny" for odd inputs.
@@ -34,7 +39,7 @@ poly2 = undefined
 -- Ps. have a look at the built in function "even"
 
 eeny :: Integer -> String
-eeny = undefined
+eeny x = if even x then "eeny" else "meeny"
 
 -- Ex 6: fizzbuzz! Define the a function fizzbuzz that returns "Fizz"
 -- for numbers divisible by 3, "Buzz" for numbers divisible by 5, and
