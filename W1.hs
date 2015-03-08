@@ -48,7 +48,15 @@ eeny x = if even x then "eeny" else "meeny"
 --
 -- You can use the function mod to compute modulo.
 
-fizzbuzz = undefined
+-- soln: can use `where` to define sub functions
+fizzbuzz :: Integer -> String
+fizzbuzz x = if x `mod` 3 == 0 && x `mod` 5 == 0
+	then "FizzBuzz"
+	else if x `mod` 3 == 0
+		then "Fizz"
+		else if x `mod` 5 == 0
+			then "Buzz"
+			else ""
 
 -- Ex 7: define a function isZero that returns True if it is given an
 -- Integer that is 0, and False otherwise. Give isZero a type signature.
