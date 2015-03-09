@@ -58,7 +58,6 @@ fizzbuzz x = if x `mod` 3 == 0 && x `mod` 5 == 0
             then "Buzz"
             else ""
 
-
 -- Ex 7: define a function isZero that returns True if it is given an
 -- Integer that is 0, and False otherwise. Give isZero a type signature.
 --
@@ -66,7 +65,7 @@ fizzbuzz x = if x `mod` 3 == 0 && x `mod` 5 == 0
 --
 -- Ps. the type of booleans in haskell is Bool
 
-isZero :: Integer -> Bool
+isZero :: (Integral a) => a -> Bool
 isZero 0 = True
 isZero _ = False
 
@@ -74,14 +73,14 @@ isZero _ = False
 --   sumTo n
 -- computes the sum 1+2+...+n
 
-sumTo :: Integer -> Integer
+sumTo :: (Integral a) => a -> a
 sumTo 1 = 1
 sumTo n = n + (sumTo (n-1))
 
 -- Ex 9: power n k should compute n to the power k (i.e. n^k)
 -- Use recursion.
 
-power :: Integer -> Integer -> Integer
+power :: (Integral a) => a -> a -> a
 power n 1 = n
 power n k = n * (power n (k-1))
 
