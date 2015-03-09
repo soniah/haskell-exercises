@@ -66,20 +66,24 @@ fizzbuzz x = if x `mod` 3 == 0 && x `mod` 5 == 0
 --
 -- Ps. the type of booleans in haskell is Bool
 
-isZero = undefined
+isZero :: Integer -> Bool
+isZero 0 = True
+isZero _ = False
 
 -- Ex 8: implement using recursion a function sumTo such that
 --   sumTo n
 -- computes the sum 1+2+...+n
 
 sumTo :: Integer -> Integer
-sumTo = undefined
+sumTo 1 = 1
+sumTo n = n + (sumTo (n-1))
 
 -- Ex 9: power n k should compute n to the power k (i.e. n^k)
 -- Use recursion.
 
 power :: Integer -> Integer -> Integer
-power = undefined
+power n 1 = n
+power n k = n * (power n (k-1))
 
 -- Ex 10: ilog2 n should be the number of times you can halve the
 -- integer n (rounding down) before you get 1.
