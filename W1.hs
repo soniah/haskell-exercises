@@ -104,7 +104,10 @@ ilog2 n = 1 + ilog2 (n `div` 2)
 -- Hint! pattern matching is your friend.
 
 binomial :: Integer -> Integer -> Integer
-binomial = undefined
+binomial n k
+    | k == 0 = 1
+    | n == 0 && k > 0 = 0
+    | otherwise = (binomial (n-1) k) + (binomial (n-1) (k-1))
 
 -- Ex 12: The tribonacci numbers are defined by the equations
 --
