@@ -90,8 +90,9 @@ power n k = n * (power n (k-1))
 -- Use recursion to define ilog2. Use the function "div" for integer
 -- division.
 
-ilog2 :: Integer -> Integer
-ilog2 = undefined
+ilog2 :: (Integral a) => Integer -> Integer
+ilog2 1 = 0
+ilog2 n = 1 + ilog2 (n `div` 2)
 
 -- Ex 11: compute binomial coefficients using recursion. Binomial
 -- coefficients are defined by the following equations:
