@@ -120,7 +120,11 @@ binomial n k
 -- computes T(n). You'll probably want to define a helper function.
 
 tribonacci :: Integer -> Integer
-tribonacci = undefined
+tribonacci 1 = 1
+tribonacci 2 = 1
+tribonacci 3 = 2
+tribonacci n = tribonacci (n-1) + tribonacci (n-2) + tribonacci (n-3)
+
 
 -- Ex 13: implement the euclidean algorithm for finding the greatest
 -- common divisor: http://en.wikipedia.org/wiki/Euclidean_algorithm
