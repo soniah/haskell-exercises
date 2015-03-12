@@ -130,7 +130,8 @@ tribonacci n = tribonacci (n-1) + tribonacci (n-2) + tribonacci (n-3)
 -- common divisor: http://en.wikipedia.org/wiki/Euclidean_algorithm
 
 myGcd :: Integer -> Integer -> Integer
-myGcd = undefined
+myGcd a 0 = a
+myGcd a b = myGcd b (a `mod` b)
 
 -- Ex 14: The Haskell Prelude (standard library) defines the type
 -- Ordering with values LT, GT and EQ. You try out Ordering by
