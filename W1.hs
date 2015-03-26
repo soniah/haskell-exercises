@@ -150,7 +150,14 @@ myGcd a b = myGcd b (a `mod` b)
 -- 2. Within even and odd numbers the ordering is normal
 
 funnyCompare :: Int -> Int -> Ordering
-funnyCompare = undefined
+funnyCompare x y
+    | even x && even y = compare x y
+    | odd x && odd y = compare x y
+    | even x && odd y = LT
+    | odd x && even y = GT
+    where
+      even q = q `mod` 2 == 0
+      odd q  = q `mod` 2 == 1
 
 -- Ex 15: Implement the function funnyMin that returns the minimum of
 -- its two arguments, according to the ordering implemented by
