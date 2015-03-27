@@ -213,7 +213,9 @@ smallestDivisor k =
 -- Ps. 0 and 1 are not prime numbers
 
 isPrime :: Integer -> Bool
-isPrime = undefined
+isPrime 0 = False
+isPrime 1 = False
+isPrime x = (smallestDivisor x) == x
 
 -- Ex 19: implement a function nextPrime that returns the first prime
 -- number that comes after the given number. Use the function isPrime
