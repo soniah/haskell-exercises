@@ -222,4 +222,5 @@ isPrime x = (smallestDivisor x) == x
 -- you just defined.
 
 nextPrime :: Integer -> Integer
-nextPrime = undefined
+nextPrime k =
+    head [ x | x <- [k+1..], isPrime x]
