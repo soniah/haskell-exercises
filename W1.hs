@@ -187,7 +187,9 @@ funnyMin x y =
 -- * you'll need a (recursive) helper function
 
 pyramid :: Integer -> String
-pyramid = undefined
+pyramid n = pyrh 0 n where
+    pyrh x 0 = show x
+    pyrh x c = show x ++ "," ++ pyrh (succ x) (pred c) ++ "," ++ show x
 
 -- Ex 17: implement the function smallestDivisor that returns the
 -- smallest number (greater than 1) that divides the given number.
