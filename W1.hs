@@ -204,7 +204,8 @@ pyramid n = pyrh 0 n where
 -- remember this in the next exercise!
 
 smallestDivisor :: Integer -> Integer
-smallestDivisor = undefined
+smallestDivisor k =
+    head [ x | x <- [2..k], k `mod` x == 0 ]
 
 -- Ex 18: implement a function isPrime that checks if the given number
 -- is a prime number. Use the function smallestDivisor.
