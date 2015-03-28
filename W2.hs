@@ -134,7 +134,10 @@ funny ss = map toUpper $ intercalate " " $ filter (\x -> length x > 5) ss
 -- PS. yes if you want to nit-pick this isn't really quicksort :)
 
 quicksort :: [Int] -> [Int]
-quicksort xs = undefined
+quicksort [] = []
+quicksort (hd:tl) = quicksort(left hd tl) ++ [hd] ++ quicksort(right hd tl)
+    where   left x xs = [x' | x' <- xs, x' <= x]
+            right x xs = [x' | x' <- xs, x' > x]
 
 -- Ex 10: powers k max should return all the powers of k that are less
 -- than or equal to max. For example:
