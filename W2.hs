@@ -28,19 +28,28 @@ import Data.Char
 -- Ex 1: Define the constant years, that is a list of the values 1982,
 -- 2004 and 2012 in this order.
 
-years = undefined
+years = [1982, 2004, 2012]
 
 -- Ex 2: define the function measure that for an empty list returns -1
 -- and for other lists returns the length of the list.
 
+-- soln: null to check for empty lists, length for length of lists
+
 measure :: [String] -> Int
-measure ss = undefined
+measure [] = -1
+measure [s] = 1
+measure ss = 1 + (measure (tail ss))
 
 -- Ex 3: define the function takeFinal, which returns the n last
 -- elements of the given list.
 
+-- soln: more concise by not separately calculating m
+
 takeFinal :: Int -> [Int] -> [Int]
-takeFinal n xs = undefined
+takeFinal n xs =
+    drop m xs
+    where
+        m = (length xs) - n
 
 -- Ex 4: remove the nth element of the given list. More precisely,
 -- return a list that is identical to the given list except the nth
@@ -55,7 +64,8 @@ takeFinal n xs = undefined
 -- The [a] in the type signature means "a list of any type"
 
 remove :: Int -> [a] -> [a]
-remove i xs = undefined
+remove i xs =
+    take i xs ++ drop (i+1) xs
 
 -- Ex 5: substring i n s should return the length n substring of s
 -- starting at index i.
@@ -63,7 +73,8 @@ remove i xs = undefined
 -- Remember that strings are lists!
 
 substring :: Int -> Int -> String -> String
-substring i n s = undefined
+substring i n s =
+    take n (drop i s)
 
 -- Ex 6: implement the function mymax that takes as argument a
 -- measuring function (of type a -> Int) and two values (of type a).
@@ -79,7 +90,10 @@ substring i n s = undefined
 --  mymax head   [1,2,3] [4,5]  ==>  [4,5]
 
 mymax :: (a -> Int) -> a -> a -> a
-mymax measure a b = undefined
+mymax measure a b =
+    if (measure a) > (measure b)
+        then a
+        else b
 
 -- Ex 7: countSorted receives a list of strings and returns a count of
 -- how many of the strings are in alphabetical order (i.e. how many of
@@ -88,7 +102,8 @@ mymax measure a b = undefined
 -- Remember the functions length, filter and sorted
 
 countSorted :: [String] -> Int
-countSorted ss = undefined
+countSorted ss = length $ filter isSorted ss
+    where isSorted xs = and $ zipWith (<=) xs (tail xs)
 
 -- Ex 8: Implement a function funny, that
 --  - takes in a list of strings
