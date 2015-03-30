@@ -176,7 +176,9 @@ powers n max =
 --     ==> Avvt
 
 search :: (a->a) -> (a->Bool) -> a -> a
-search update check initial = undefined
+search update check initial =
+    let fn x = if check x then x else fn $ update x
+    in fn initial
 
 -- Ex 12: given numbers n and k, build the list of numbers n,n+1..k.
 -- Use recursion and the : operator to build the list.
