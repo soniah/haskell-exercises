@@ -183,8 +183,14 @@ search update check initial =
 -- Ex 12: given numbers n and k, build the list of numbers n,n+1..k.
 -- Use recursion and the : operator to build the list.
 
+-- soln: fromTo n k = if n>k then [] else n:fromTo (n+1) k
+
 fromTo :: Int -> Int -> [Int]
-fromTo n k = undefined
+fromTo n k = go n k [] where
+    go n k xs
+        | n > k = []
+        | n == k = k : xs
+        | otherwise = go n (k-1) $ k : xs
 
 -- Ex 13: given i, build the list of sums [1, 1+2, 1+2+3, .., 1+2+..+i]
 --
