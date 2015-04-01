@@ -218,7 +218,7 @@ mylast _   (x:xs) = mylast x xs
 -- library list functions.
 
 sorted :: [Int] -> Bool
-sorted xs = undefined
+sorted xs = and [ x<=y | (x,y) <- zip xs (tail xs) ]
 
 -- Ex 16: compute the partial sums of the given list like this:
 --
