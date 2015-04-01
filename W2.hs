@@ -207,8 +207,11 @@ sums i = [ sum [1..x] | x <- [1..i] ]
 --   mylast 0 [] ==> 0
 --   mylast 0 [1,2,3] ==> 3
 
+-- soln: 2nd def can be skipped: mylast _ (x:xs) = mylast x xs
+
 mylast :: a -> [a] -> a
-mylast def xs = undefined
+mylast def [] = def
+mylast _   (x:xs) = mylast x xs
 
 -- Ex 15: define a function that checks if the given list is in
 -- increasing order. Use recursion and pattern matching. Don't use any
