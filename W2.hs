@@ -197,7 +197,7 @@ fromTo n k = go n k [] where
 -- Ps. you'll probably need a recursive helper function
 
 sums :: Int -> [Int]
-sums i = undefined
+sums i = [ sum [1..x] | x <- [1..i] ]
 
 -- Ex 14: using list pattern matching and recursion, define a function
 -- mylast that returns the last value of the given list. For an empty
