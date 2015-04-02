@@ -224,10 +224,14 @@ sorted xs = and [ x<=y | (x,y) <- zip xs (tail xs) ]
 --
 --   sumsOf [a,b,c]  ==>  [a,a+b,a+b+c]
 --   sumsOf [a,b]    ==>  [a,a+b]
+--   sumsOf [a]      ==>  [a]
 --   sumsOf []       ==>  []
 
 sumsOf :: [Int] -> [Int]
-sumsOf xs = undefined
+sumsOf xs = sumsOf' 1 $ length xs where
+    sumsOf' n l
+        | n <= l = sum (take n xs) : sumsOf' (n+1) l
+        | otherwise = []
 
 -- Ex 17: define the function mymaximum that takes a list and a
 -- comparing function of type a -> a -> Ordering and returns the
