@@ -155,7 +155,7 @@ quicksort (hd:tl) = quicksort(left hd tl) ++ [hd] ++ quicksort(right hd tl)
 powers :: Int -> Int -> [Int]
 powers n max =
     [n ^ y | y <- xs]
-    where xs = takeWhile (\ x -> n^x < max) [0..]
+    where xs = takeWhile (\ x -> n^x <= max) [0..]
 
 -- Ex 11: implement a search function that takes an updating function,
 -- a checking function and an initial value. Search should repeatedly
