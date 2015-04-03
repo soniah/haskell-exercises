@@ -65,7 +65,11 @@ mapMaybe f xs = catMaybes $ map f xs where
 --     ==> ([1,0],[True,False])
 
 classify :: [Either a b] -> ([a],[b])
-classify es = undefined
+classify es = go [] [] es where
+    go lefts rights [] = (lefts, rights)
+    go lefts rights (x:xs) = case x of
+        Left y -> go (lefts ++ [y]) rights xs
+        Right y -> go lefts (rights ++ [y]) xs
 
 -- Ex 5: define a datatype Person, which should contain the age (an
 -- Int) and the name (a String) of a person.
