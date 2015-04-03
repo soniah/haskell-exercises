@@ -250,7 +250,13 @@ sumsOf xs = sumsOf' 1 $ length xs where
 --     ==> 0
 
 mymaximum :: (a -> a -> Ordering) -> a -> [a] -> a
-mymaximum cmp def xs = undefined
+mymaximum _   def [] = def
+mymaximum cmp _   (x:xs) = go cmp x xs where
+    go _   largest [] = largest
+    go cmp largest (y:ys) =
+        if largest `cmp` y == GT
+            then go cmp largest ys
+            else go cmp y       ys
 
 -- Ex 18: define a version of map that takes a two-argument function
 -- and two lists. Example:
