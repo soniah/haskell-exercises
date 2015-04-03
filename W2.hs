@@ -316,7 +316,6 @@ interpreter commands = go 0 0 commands [] where
         | cmd == "printB" = go a b cmds $ result ++ [show b]
         | otherwise = go a b cmds $ result ++ ["BAD"]
 
-
 -- Ex 20: write a function that finds the n first squares (numbers of
 -- the form x*x) that start and end with the same digit.
 --
@@ -324,5 +323,14 @@ interpreter commands = go 0 0 commands [] where
 --
 -- Remember, the function show transforms a number to a string.
 
+-- soln: more compact
+-- squares n = take n . filter (\x -> head (show x) == last (show x)) $ map (\x -> x*x) [1..]
+
 squares :: Int -> [Integer]
-squares n = undefined
+squares 0 = []
+squares n =
+    let
+        ok x = head (show x) == last (show x)
+        ns = [ x*x | x <- [1..], ok $ x*x ]
+    in
+        take n ns
