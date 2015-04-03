@@ -304,7 +304,18 @@ map2 f (a:as) (b:bs) =
 -- your interpreter correctly but weirdly :(
 
 interpreter :: [String] -> [String]
-interpreter commands = undefined
+interpreter []       = []
+interpreter commands = go 0 0 commands [] where
+    go _ _ [] result = result
+    go a b (cmd:cmds) result
+        | cmd == "incA" = go (a+1) b cmds result
+        | cmd == "incB" = go a (b+1) cmds result
+        | cmd == "decA" = go (a-1) b cmds result
+        | cmd == "decB" = go a (b-1) cmds result
+        | cmd == "printA" = go a b cmds $ result ++ [show a]
+        | cmd == "printB" = go a b cmds $ result ++ [show b]
+        | otherwise = go a b cmds $ result ++ ["BAD"]
+
 
 -- Ex 20: write a function that finds the n first squares (numbers of
 -- the form x*x) that start and end with the same digit.
