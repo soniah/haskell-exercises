@@ -268,7 +268,10 @@ mymaximum cmp _   (x:xs) = go cmp x xs where
 -- name.
 
 map2 :: (a -> b -> c) -> [a] -> [b] -> [c]
-map2 f as bs = undefined
+map2 _ as [] = []
+map2 _ [] bs = []
+map2 f (a:as) (b:bs) =
+    (f a b) : map2 f as bs
 
 -- Ex 19: in this exercise you get to implement an interpreter for a
 -- simple language. The language controls two counters, A and B, and
