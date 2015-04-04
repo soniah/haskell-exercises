@@ -77,29 +77,28 @@ classify es = go [] [] es where
 -- Also define a Person value fred, and the functions getAge, getname,
 -- setAge and setName (see below).
 
-data Person = PersonUndefined
+data Person = Person Int String
   deriving Show
 
--- fred is a person whose name is Fred and age is 90
+-- fred is a person whose age is 90 and name is Fred
 fred :: Person
-fred = undefined
+fred = Person 90 "Fred"
 
 -- getName returns the name of the person
 getName :: Person -> String
-getName p = undefined
+getName (Person _ name) = name
 
 -- getAge returns the age of the person
 getAge :: Person -> Int
-getAge p = undefined
+getAge (Person age _) = age
 
 -- setName takes a person and returns a new person with the name changed
 setName :: String -> Person -> Person
-setName name p = undefined
+setName name (Person age _) = Person age name
 
 -- setAge does likewise for age
 setAge :: Int -> Person -> Person
-setAge age p = undefined
-
+setAge age (Person _ name) = Person age name
 
 -- Ex 6: define a datatype TwoCounters which contains two Int
 -- counters. Also define the functions below for operating a
