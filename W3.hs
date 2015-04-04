@@ -150,25 +150,28 @@ incB (TwoCounters a b) = TwoCounters a (succ b)
 -- get (tick (tick (toggle (tick zero))))
 --   ==> -1
 
-data UpDown = UpDownUndefined1 | UpDownUndefined2
+data UpDown = Upper Int | Downer Int
 
 -- zero is an increasing counter with value 0
 zero :: UpDown
-zero = undefined
+zero = Upper 0
 
 -- get returns the counter value
 get :: UpDown -> Int
-get ud = undefined
+get (Upper x) = x
+get (Downer x) = x
 
 -- tick increases an increasing counter by one or decreases a
 -- decreasing counter by one
 tick :: UpDown -> UpDown
-tick ud = undefined
+tick (Upper x) = Upper (x+1)
+tick (Downer x) = Downer (x-1)
 
 -- toggle changes an increasing counter into a decreasing counter and
 -- vice versa
 toggle :: UpDown -> UpDown
-toggle ud = undefined
+toggle (Upper x) = Downer x
+toggle (Downer x) = Upper x
 
 -- !!!!!
 -- The next exercises use the binary tree type defined like this:
