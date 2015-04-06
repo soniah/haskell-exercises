@@ -225,7 +225,9 @@ leftest x = Foo.listToMaybe $ myflatten x where
 --   ==> (Node 2 (Node 3 Leaf Leaf) (Node 4 Leaf Leaf))
 
 mapTree :: (a -> b) -> Tree a -> Tree b
-mapTree f t = undefined
+mapTree _ Leaf = Leaf
+mapTree f (Node x left right) =
+    Node (f x) (mapTree f left) (mapTree f right)
 
 -- Ex 12: insert the given value into the leftmost possible place. You
 -- need to return a new tree since the function is pure.
