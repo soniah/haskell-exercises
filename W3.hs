@@ -1,5 +1,7 @@
 module W3 where
 
+import qualified Data.Maybe as Foo
+
 -- Week 3:
 --   * built-in datatypes
 --   * custom datatypes
@@ -210,7 +212,9 @@ treeSize (Node _ t1 t2) = 1 + treeSize t1 + treeSize t2
 --   ==> Just 2
 
 leftest :: Tree a -> Maybe a
-leftest t = undefined
+leftest x = Foo.listToMaybe $ myflatten x where
+    myflatten Leaf = []
+    myflatten (Node y t1 t2) = myflatten t1 ++ [y] ++ myflatten t2
 
 -- Ex 11: implement map for trees.
 --
