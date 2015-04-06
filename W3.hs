@@ -184,7 +184,8 @@ data Tree a = Leaf | Node a (Tree a) (Tree a)
 -- because the tree might be empty (i.e. just a Leaf)
 
 valAtRoot :: Tree a -> Maybe a
-valAtRoot t = undefined
+valAtRoot (Node x _ _) = Just x
+valAtRoot _ = Nothing
 
 -- Ex 9: compute the size of a tree, that is, the number of Node
 -- constructors in it
