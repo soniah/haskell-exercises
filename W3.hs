@@ -252,7 +252,9 @@ mapTree f (Node x left right) =
 
 
 insertL :: a -> Tree a -> Tree a
-insertL x t = undefined
+insertL x Leaf = Node x Leaf Leaf
+insertL x (Node y left right) =
+    Node y (insertL x left) right
 
 -- Ex 13: implement the function measure, that takes a tree and
 -- returns a tree with the same shape, but with the value at every
