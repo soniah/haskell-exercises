@@ -280,8 +280,15 @@ insertL x (Node y left right) =
 --                                 (Node 1 Leaf Leaf)))
 
 
+-- soln: more efficient, as it recursively calculates subnodes, then
+-- sums subnode values to produce node value. Mine re-traverses subtree
+-- on every node.
+
 measure :: Tree a -> Tree Int
-measure t = undefined
+measure Leaf = Leaf
+measure (Node x left right) =
+    Node size (measure left) (measure right) where
+        size = treeSize (Node x left right)
 
 -- Ex 14: the standard library function
 --   foldr :: (a -> b -> b) -> b -> [a] -> b
