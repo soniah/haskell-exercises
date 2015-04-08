@@ -23,7 +23,9 @@ import System.IO
 -- first line should be HELLO and the second one WORLD
 
 hello :: IO ()
-hello = undefined
+hello = do
+    putStrLn "HELLO"
+    putStrLn "WORLD"
 
 -- Ex 2: define the IO operation greet that takes a name as an
 -- argument and prints a line "HELLO name".
