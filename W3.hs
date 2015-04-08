@@ -381,5 +381,24 @@ foldTree f z (Node x left right) =
 data Color = Red | Green | Blue | Mix Color Color | Darken Double Color
   deriving Show
 
+-- soln:
+-- zipWith - can combine z1 and f1
+
 rgb :: Color -> [Double]
-rgb col = undefined
+rgb Red = [1,0,0]
+rgb Green = [0,1,0]
+rgb Blue = [0,0,1]
+rgb (Mix c1 c2) =
+    let z1 = zip (rgb c1) (rgb c2)
+        f1 (x,y) = bound $ x + y
+    in map f1 z1
+rgb (Darken d1 c1) =
+    let darken x = bound $ x - (d1 * x)
+    in  map darken (rgb c1)
+
+-- keep x within bounds of 0 and 1
+bound :: (Ord a, Num a) => a -> a
+bound x
+    | x < 0 = 0
+    | x > 1 = 1
+    | otherwise = x
