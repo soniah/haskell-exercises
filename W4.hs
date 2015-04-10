@@ -48,8 +48,19 @@ greet2 = do
 -- Ex 4: define the IO operation readWords n which reads n lines from
 -- the user and returns them in alphabetical order.
 
+-- soln: uses replicateM, which I'd never heard of. See:
+-- Hackage "Control.Monad Generalisations of list functions"
+-- http://hackage.haskell.org/package/base-4.8.0.0/docs/Control-Monad.html#g:5
+
 readWords :: Int -> IO [String]
-readWords n = undefined
+readWords n = rw n []
+
+rw :: Int -> [String] -> IO [String]
+rw 0 acc = do
+    return (sort acc)
+rw n acc = do
+    line <- getLine
+    rw (n-1) (line : acc)
 
 -- Ex 5: define the IO operation readUntil f, which reads lines from
 -- the user and returns them as a list. Reading is stopped when f
