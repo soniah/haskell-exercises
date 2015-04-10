@@ -67,8 +67,15 @@ rw n acc = do
 -- returns True for a line. (The value for which f returns True is not
 -- returned.)
 
+-- soln: can nest do's. Can therefore recursively call fn
+-- then use more efficient cons instead of ++
+
 readUntil :: (String -> Bool) -> IO [String]
-readUntil f = undefined
+readUntil f = ru f [] where
+    ru f acc = do
+        line <- getLine
+        if f line then return acc
+        else ru f $ acc ++ [line]
 
 -- Ex 6: given n, print the n first fibonacci numbers, one per line
 
