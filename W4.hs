@@ -96,12 +96,25 @@ fibs n acc
         let newhead = head acc + head (drop 1 acc)
         in fibs (n-1) $ newhead:acc
 
--- Ex 7: isums n should read n numbers from the user and return their
--- sum. Additionally, after each read number, the sum up to that
--- number should be printed.
+-- Ex 7: isums n should read n numbers from the user and return
+-- their sum. Additionally, after each read number, the sum up
+-- to that number should be printed.
 
 isums :: Int -> IO Int
-isums n = undefined
+isums n = isums' n 0
+
+-- soln: readLn: combines getLine and readIO, where:
+--   read :: Read a => String -> a
+--   readIO :: Read a => String -> IO a
+
+isums' :: Int -> Int -> IO Int
+isums' 0 acc = do
+    return acc
+isums' n acc = do
+    number <- getLine
+    let inumber = read number
+    print (acc + inumber)
+    isums' (n-1) (acc + inumber)
 
 -- Ex 8: when is a useful function, but its first argument has type
 -- Bool. Write a function that behaves similarly but the first
