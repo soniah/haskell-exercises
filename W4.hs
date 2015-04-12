@@ -210,8 +210,14 @@ myforM (a:as) f = do
 --     do l <- readLn
 --        replicateM l getLine
 
+-- soln: note "op2" is the same as "res <- op2; return res"
+
 tuplaKutsu :: IO (IO a) -> IO a
-tuplaKutsu op = undefined
+tuplaKutsu op = do
+    op2 <- op
+    do
+        res <- op2
+        return res
 
 -- Ex 14: implement the analogue of function composition (the (.)
 -- operator) for IO operations. That is, take an operation op1 of type
