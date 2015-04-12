@@ -80,21 +80,7 @@ readUntil f = ru f [] where
 -- Ex 6: given n, print the n first fibonacci numbers, one per line
 
 printFibs :: Int -> IO ()
-printFibs n = do
-    let fs = fibs n [1,1]
-    mapM_ print fs
-
--- soln: nice - use previous 2 values recursively,
--- not a list
-
--- fibs takes n and starting acc eg [1,0], returns list of fibs
-fibs :: Int -> [Int] -> [Int]
-fibs n acc
-    | n == 1 = [head acc] -- nasty
-    | n == 2 = reverse acc
-    | otherwise =
-        let newhead = head acc + head (drop 1 acc)
-        in fibs (n-1) $ newhead:acc
+printFibs n = undefined
 
 -- Ex 7: isums n should read n numbers from the user and return
 -- their sum. Additionally, after each read number, the sum up
