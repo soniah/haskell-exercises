@@ -186,11 +186,13 @@ myforM (a:as) f = do
     res2 <- myforM as f
     return (res1 : res2)
 
--- Ex 13: sometimes one bumps into IO operations that return IO
--- operations. For instance the type IO (IO Int) means an IO operation
--- that returns an IO operation that returns an Int.
+-- Ex 13: sometimes one bumps into IO operations that return
+-- IO operations. For instance the type IO (IO Int) means an
+-- IO operation that returns an IO operation that returns an
+-- Int.
 --
--- Implement the function doubleCall which takes an operation op and
+-- Implement the function doubleCall which takes an
+-- operation op and
 --   1. runs op
 --   2. runs the operation returned by op
 --   3. returns the value returned by this operation
