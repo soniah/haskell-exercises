@@ -244,8 +244,9 @@ compose op1 op2 c = do
 -- Ex 15: take a look at the documentaiton for Data.IORef
 -- <http://www.haskell.org/ghc/docs/latest/html/libraries/base/Data-IORef.html>
 --
--- Implement the function mkCounter that returns the io operations
--- inc :: IO () and get :: IO Int. These operations should work like this:
+-- Implement the function mkCounter that returns the io
+-- operations inc :: IO () and get :: IO Int. These
+-- operations should work like this:
 --
 --   get returns the number of times inc has been called
 --
