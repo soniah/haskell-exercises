@@ -168,7 +168,11 @@ while cond op = do
 --     4. returns the line read from the user
 
 debug :: String -> IO a -> IO a
-debug s op = undefined
+debug s op = do
+    putStrLn s
+    x <- op
+    putStrLn s
+    return x
 
 -- Ex 11: Reimplement mapM_ (specialized to the IO type) using
 -- recursion and pattern matching.
