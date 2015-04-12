@@ -219,8 +219,9 @@ tuplaKutsu op = do
         res <- op2
         return res
 
--- Ex 14: implement the analogue of function composition (the (.)
--- operator) for IO operations. That is, take an operation op1 of type
+-- Ex 14: implement the analogue of function composition
+-- (the (.) operator) for IO operations. That is, take an
+-- operation op1 of type
 --     a -> IO b
 -- an operation op2 of type
 --     c -> IO a
@@ -231,7 +232,8 @@ tuplaKutsu op = do
 --
 -- op3 should of course
 --   1. take the value of type c and pass it to op2
---   2. take the resulting value (of type a) and pass it to op1
+--   2. take the resulting value (of type a) and pass it to
+--   op1
 --   3. return the result (of type b)
 
 compose :: (a -> IO b) -> (c -> IO a) -> c -> IO b
