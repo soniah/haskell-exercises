@@ -237,7 +237,9 @@ tuplaKutsu op = do
 --   3. return the result (of type b)
 
 compose :: (a -> IO b) -> (c -> IO a) -> c -> IO b
-compose op1 op2 c = undefined
+compose op1 op2 c = do
+    a <- op2 c
+    op1 a
 
 -- Ex 15: take a look at the documentaiton for Data.IORef
 -- <http://www.haskell.org/ghc/docs/latest/html/libraries/base/Data-IORef.html>
