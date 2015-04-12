@@ -190,8 +190,15 @@ mymapM_ mf (x:xs) = do
 -- Ex 12: Reimplement the function forM using pattern
 -- matching and recursion.
 
+-- soln: b & bs for results, and $ for return - more
+-- logical, neater
+
 myforM :: [a] -> (a -> IO b) -> IO [b]
-myforM as f = undefined
+myforM [] f = return []
+myforM (a:as) f = do
+    res1 <- f a
+    res2 <- myforM as f
+    return (res1 : res2)
 
 -- Ex 13: sometimes one bumps into IO operations that return IO
 -- operations. For instance the type IO (IO Int) means an IO operation
