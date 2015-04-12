@@ -125,11 +125,12 @@ whenM cond op = do
     cond' <- cond
     when cond' op
 
--- Ex 9: implement the while loop. while condition operation should
--- run operation as long as condition returns True.
+-- Ex 9: implement the while loop. while condition operation
+-- should run operation as long as condition returns True.
 --
 -- Examples:
--- while (return False) (putStrLn "IMPOSSIBLE")  -- prints nothing
+-- while (return False) (putStrLn "IMPOSSIBLE")
+-- prints nothing
 --
 -- let ask :: IO Bool
 --     ask = do putStrLn "Y/N?"
