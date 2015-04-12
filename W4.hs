@@ -187,8 +187,8 @@ mymapM_ mf (x:xs) = do
     mf x
     mymapM_ mf xs
 
--- Ex 12: Reimplement the function forM using pattern matching and
--- recursion.
+-- Ex 12: Reimplement the function forM using pattern
+-- matching and recursion.
 
 myforM :: [a] -> (a -> IO b) -> IO [b]
 myforM as f = undefined
