@@ -182,7 +182,10 @@ debug s op = do
 -- runs the operation for each value in the list.
 
 mymapM_ :: (a -> IO b) -> [a] -> IO ()
-mymapM_ = undefined
+mymapM_ mf [] = do return ()
+mymapM_ mf (x:xs) = do
+    mf x
+    mymapM_ mf xs
 
 -- Ex 12: Reimplement the function forM using pattern matching and
 -- recursion.
