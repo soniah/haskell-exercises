@@ -151,9 +151,9 @@ while cond op = do
     else
         return ()
 
--- Ex 10: given a string and an IO operation, print the string, run
--- the IO operation, print the string again, and finally return what
--- the operation returned.
+-- Ex 10: given a string and an IO operation, print the string,
+-- run the IO operation, print the string again, and finally
+-- return what the operation returned.
 --
 -- Note! the operation should be run only once
 --
