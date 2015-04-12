@@ -116,12 +116,14 @@ isums' n acc = do
     print (acc + inumber)
     isums' (n-1) (acc + inumber)
 
--- Ex 8: when is a useful function, but its first argument has type
--- Bool. Write a function that behaves similarly but the first
--- argument has type IO Bool.
+-- Ex 8: when is a useful function, but its first argument has
+-- type Bool. Write a function that behaves similarly but the
+-- first argument has type IO Bool.
 
 whenM :: IO Bool -> IO () -> IO ()
-whenM cond op = undefined
+whenM cond op = do
+    cond' <- cond
+    when cond' op
 
 -- Ex 9: implement the while loop. while condition operation should
 -- run operation as long as condition returns True.
