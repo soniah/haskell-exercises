@@ -140,8 +140,16 @@ whenM cond op = do
 --
 -- This prints YAY! as long as the user keeps answering Y
 
+-- soln: use whenM, just as I thought
+
 while :: IO Bool -> IO () -> IO ()
-while cond op = undefined
+while cond op = do
+    cond' <- cond
+    if cond' then do
+        op
+        while cond op
+    else
+        return ()
 
 -- Ex 10: given a string and an IO operation, print the string, run
 -- the IO operation, print the string again, and finally return what
