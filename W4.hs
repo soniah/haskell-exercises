@@ -174,12 +174,12 @@ debug s op = do
     putStrLn s
     return x
 
--- Ex 11: Reimplement mapM_ (specialized to the IO type) using
--- recursion and pattern matching.
+-- Ex 11: Reimplement mapM_ (specialized to the IO type)
+-- using recursion and pattern matching.
 --
--- In case you don't know what mapM_ does, it takes a parameterized IO
--- operation and a list of parameters, and runs the operation for each
--- value in the list.
+-- In case you don't know what mapM_ does, it takes a
+-- parameterized IO operation and a list of parameters, and
+-- runs the operation for each value in the list.
 
 mymapM_ :: (a -> IO b) -> [a] -> IO ()
 mymapM_ = undefined
