@@ -358,21 +358,21 @@ diffLines (l1,l2)
     | l1 == l2 = []
     | otherwise = "< " ++ l1 ++ "\n" ++ "> " ++ l2
 
--- Ex 19: In this exercise we see how a program can be split into a
--- pure part that does all of the work, and a simple IO wrapper that
--- drives the pure logic.
+-- Ex 19: In this exercise we see how a program can be split
+-- into a pure part that does all of the work, and a simple
+-- IO wrapper that drives the pure logic.
 --
--- Implement the function interact' that takes a pure function f of
--- type
---   (String, st) -> (Bool, String, st)
--- and a starting state of type st and returns an IO operation of type
--- IO st
+-- Implement the function interact' that takes a pure
+-- function f of type (String, st) -> (Bool, String, st) and
+-- a starting state of type st and returns an IO operation
+-- of type IO st
 --
--- interact' should read a line from the user, feed the line and the
--- current state to f. f then returns a boolean, a string to print and
--- a new state. The string is printed, and if the boolean is True, we
--- continue running with the new state. If the boolean is False, the
--- execution has ended and the state should be returned.
+-- interact' should read a line from the user, feed the line
+-- and the current state to f. f then returns a boolean, a
+-- string to print and a new state. The string is printed,
+-- and if the boolean is True, we continue running with the
+-- new state. If the boolean is False, the execution has
+-- ended and the state should be returned.
 --
 -- Example:
 --
