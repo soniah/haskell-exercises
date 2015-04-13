@@ -347,7 +347,16 @@ readCSV path = do
 -- [String] -> [String] -> [String].
 
 compareFiles :: FilePath -> FilePath -> IO ()
-compareFiles a b = undefined
+compareFiles a b = do
+    a' <- readFile a
+    b' <- readFile b
+    let output = map diffLines $ zip (lines a') (lines b')
+    mapM_ putStrLn $ filter (\x -> length x > 0) output
+
+diffLines :: (String,String) -> String
+diffLines (l1,l2)
+    | l1 == l2 = []
+    | otherwise = "< " ++ l1 ++ "\n" ++ "> " ++ l2
 
 -- Ex 19: In this exercise we see how a program can be split into a
 -- pure part that does all of the work, and a simple IO wrapper that
