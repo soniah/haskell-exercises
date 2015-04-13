@@ -265,7 +265,14 @@ compose op1 op2 c = do
 --  4
 
 mkCounter :: IO (IO (), IO Int)
-mkCounter = undefined
+mkCounter = do
+    let x = 0 -- XX I'm thinking mutable state here, use fn
+              -- 2 fns - with acc and init with 0; increment
+    let get = do
+        print x
+    let inc = do
+        return (x + 1) -- returns inc'd, but doesn't inc x
+    return (get,inc)
 
 -- Ex 16: fetch from the given file (Handle) the lines with the given
 -- indices. Line indexing starts from 1. You can assume that the
