@@ -284,16 +284,17 @@ numLinesOnly input idxs =
     let pairs = zip [1..] $ lines input
     in [ line | (idx,line) <- pairs, idx `elem` idxs ]
 
--- Ex 17: CSV is a file format that stores a two-dimensional array of
--- values in a file. Each row of the file is a row of the array. Each
--- row of the file consists of values on that row separated with the ,
--- character.
+-- Ex 17: CSV is a file format that stores a two-dimensional
+-- array of values in a file. Each row of the file is a row
+-- of the array. Each row of the file consists of values on
+-- that row separated with the , character.
 --
--- Implement the function readCSV that reads a CSV file and returns it
--- as a list of lists.
+-- Implement the function readCSV that reads a CSV file and
+-- returns it as a list of lists.
 --
--- NB! You don't need to handle the intricacies of real CSV, e.g.
--- quoting. You can assume each , character starts a new field.
+-- NB! You don't need to handle the intricacies of real CSV,
+-- e.g.  quoting. You can assume each , character starts a
+-- new field.
 --
 -- NB! The lines might have different numbers of elements.
 
