@@ -306,9 +306,9 @@ readCSV path = do
     contents <- readFile path
     return $ map (splitOn ",") $ lines contents
 
--- Ex 18: your task is to compare two files, a and b. The files should
--- have the same contents, but if lines at index i differ from each
--- other, you should print
+-- Ex 18: your task is to compare two files, a and b. The
+-- files should have the same contents, but if lines at
+-- index i differ from each other, you should print
 --
 -- < file a version of the line
 -- > file b version of the line
@@ -339,10 +339,11 @@ readCSV path = do
 -- < cc
 -- > dd
 --
--- NB! You can assume the files have the same number of rows.
+-- NB! You can assume the files have the same number of
+-- rows.
 --
--- Hint! It's probably wise to implement a pure function for finding
--- the differing lines. A suitable type could be
+-- Hint! It's probably wise to implement a pure function for
+-- finding the differing lines. A suitable type could be
 -- [String] -> [String] -> [String].
 
 compareFiles :: FilePath -> FilePath -> IO ()
