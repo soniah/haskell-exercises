@@ -267,11 +267,12 @@ compose op1 op2 c = do
 mkCounter :: IO (IO (), IO Int)
 mkCounter = undefined
 
--- Ex 16: fetch from the given file (Handle) the lines with the given
--- indices. Line indexing starts from 1. You can assume that the
--- numbers are given in ascending order.
+-- Ex 16: fetch from the given file (Handle) the lines with
+-- the given indices. Line indexing starts from 1. You can
+-- assume that the numbers are given in ascending order.
 --
--- Have a look at the docs for the System.IO module for help.
+-- Have a look at the docs for the System.IO module for
+-- help.
 
 hFetchLines :: Handle -> [Int] -> IO [String]
 hFetchLines h nums = undefined
