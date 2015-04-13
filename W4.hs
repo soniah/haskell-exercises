@@ -4,6 +4,7 @@ import Control.Monad
 import Data.List
 import Data.IORef
 import System.IO
+import Data.List.Split
 
 -- Week 4:
 --   * The IO type
@@ -298,8 +299,12 @@ numLinesOnly input idxs =
 --
 -- NB! The lines might have different numbers of elements.
 
+-- soln: can use readFile instead of openFile, hGetContents
+
 readCSV :: FilePath -> IO [[String]]
-readCSV path = undefined
+readCSV path = do
+    contents <- readFile path
+    return $ map (splitOn ",") $ lines contents
 
 -- Ex 18: your task is to compare two files, a and b. The files should
 -- have the same contents, but if lines at index i differ from each
