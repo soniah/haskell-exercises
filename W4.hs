@@ -275,7 +275,14 @@ mkCounter = undefined
 -- help.
 
 hFetchLines :: Handle -> [Int] -> IO [String]
-hFetchLines h nums = undefined
+hFetchLines h nums = do
+    contents <- hGetContents h
+    return (numLinesOnly contents nums)
+
+numLinesOnly :: String -> [Int] -> [String]
+numLinesOnly input idxs =
+    let pairs = zip [1..] $ lines input
+    in [ line | (idx,line) <- pairs, idx `elem` idxs ]
 
 -- Ex 17: CSV is a file format that stores a two-dimensional array of
 -- values in a file. Each row of the file is a row of the array. Each
