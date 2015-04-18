@@ -384,4 +384,10 @@ diffLines (l1,l2)
 --
 
 interact' :: ((String,st) -> (Bool,String,st)) -> st -> IO st
-interact' f state = undefined
+interact' f state = do
+    cmd <- getLine
+    let (bool,msg,state') = f $ (cmd,state)
+    putStr msg
+    if bool
+        then interact' f state'
+        else return state'
