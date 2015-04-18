@@ -81,7 +81,13 @@ readUntil f = ru f [] where
 -- Ex 6: given n, print the n first fibonacci numbers, one per line
 
 printFibs :: Int -> IO ()
-printFibs n = undefined
+printFibs n = do
+    let fibsn = take n $ fibs 1 1
+    mapM_ print fibsn
+
+fibs :: Int -> Int -> [Int]
+fibs x y =
+    x : (fibs y (x+y))
 
 -- Ex 7: isums n should read n numbers from the user and return
 -- their sum. Additionally, after each read number, the sum up
