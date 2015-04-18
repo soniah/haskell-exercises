@@ -16,14 +16,14 @@ import Data.List
 --  - Num
 --  - Functor
 
--- Ex 1: hey, did you know you can implement your own operators in
--- Haskell? Implement the operator %$ that combines two strings like
--- this:
+-- Ex 1: hey, did you know you can implement your own
+-- operators in Haskell? Implement the operator %$ that
+-- combines two strings like this:
 --
 -- "aa" %$ "foo" ==> "aafooaa"
 --
--- and the operator *! that takes a value and a number and produces a
--- list that repeats the value that many times:
+-- and the operator *! that takes a value and a number and
+-- produces a list that repeats the value that many times:
 --
 -- True *! 3 ==> [True,True,True]
 
