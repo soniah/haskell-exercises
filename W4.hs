@@ -266,7 +266,11 @@ compose op1 op2 c = do
 --  4
 
 mkCounter :: IO (IO (), IO Int)
-mkCounter = undefined
+mkCounter = do
+    ref <- newIORef (0 :: Int)
+    let inc = modifyIORef ref (+1)
+    let get = readIORef ref
+    return (inc,get)
 
 -- Ex 16: fetch from the given file (Handle) the lines with
 -- the given indices. Line indexing starts from 1. You can
