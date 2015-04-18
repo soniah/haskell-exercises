@@ -28,10 +28,10 @@ import Data.List
 -- True *! 3 ==> [True,True,True]
 
 (%$) :: String -> String -> String
-x %$ y = undefined
+x %$ y = x ++ y ++ x
 
 (*!) :: Int -> a -> [a]
-n *! val = undefined
+n *! val = replicate n val
 
 -- Ex 2: implement the function allEqual which returns True if all
 -- values in the list are equal.
