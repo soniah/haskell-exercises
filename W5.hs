@@ -123,7 +123,10 @@ data Foo = Bar | Quux | Xyzzy
   deriving Show
 
 instance Eq Foo where
-  (==) = error "implement me"
+    Bar == Bar = True
+    Quux == Quux = True
+    Xyzzy == Xyzzy = True
+    _ == _ = False
 
 -- Ex 7: implement an Ord instance for Foo so that Quux < Bar < Xyzzy
 
