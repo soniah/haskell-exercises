@@ -90,7 +90,19 @@ secondSmallest xs =
 --  findDifference [0,0,0] [0,0,0,0]
 --    ==> Just "3 /= 4"
 
-findDifference = undefined
+-- soln is better - shows how to do length checks first
+-- then head checks, using guards then where
+
+findDifference :: (Eq a, Show a) => [a] -> [a] -> Maybe String
+findDifference ps qs = fd ps qs where
+    myout o1 o2 = Just $ show o1 ++ " /= " ++ show o2
+    fd [] [] = Nothing
+    fd [] xs = myout (length ps) (length qs)
+    fd xs [] = myout (length ps) (length qs)
+    fd (x:xs) (y:ys)
+        | (length xs) /= (length ys) = myout (length xs + 1) (length ys + 1)
+        | x /= y = myout x y
+        | otherwise = fd xs ys
 
 -- Ex 5: compute the average of a list of values of the Fractional
 -- class.
