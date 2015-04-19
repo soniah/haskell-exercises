@@ -74,17 +74,15 @@ secondSmallest xs =
     if length xs <= 1 then Nothing
     else Just $ head $ tail $ sort xs
 
--- Ex 4: find how two lists differ from each other. If they have
--- different lengths, return
---   Just "<length of list> /= <length of other list>"
--- if they have the same length, find the first index i for which the
--- elements differ, and return
---   Just "<value at index i> /= <other value at index i>"
--- if the lists are the same, return
---   Nothing
+-- Ex 4: find how two lists differ from each other. If they
+-- have different lengths, return Just "<length of list> /=
+-- <length of other list>" if they have the same length,
+-- find the first index i for which the elements differ, and
+-- return Just "<value at index i> /= <other value at index
+-- i>" if the lists are the same, return Nothing
 --
--- NB! Write the type signature for findDifference your self. Which
--- type classes do you need?
+-- NB! Write the type signature for findDifference your
+-- self. Which type classes do you need?
 --
 -- Examples:
 --  findDifference [True,False] [True,True]
