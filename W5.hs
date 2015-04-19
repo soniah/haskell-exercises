@@ -57,8 +57,9 @@ allEqual (x:xs) = ae x xs where
         then ae z zs
         else False
 
--- Ex 3: implement the function secondSmallest that returns the second
--- smallest value in the list, or Nothing if there is no such value.
+-- Ex 3: implement the function secondSmallest that returns
+-- the second smallest value in the list, or Nothing if
+-- there is no such value.
 --
 -- Examples:
 --
