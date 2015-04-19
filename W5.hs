@@ -104,17 +104,18 @@ findDifference ps qs = fd ps qs where
         | x /= y = myout x y
         | otherwise = fd xs ys
 
--- Ex 5: compute the average of a list of values of the Fractional
--- class.
+-- Ex 5: compute the average of a list of values of the
+-- Fractional class.
 --
 -- Hint! since Fractional is a subclass of Num, you have all
 -- arithmetic operations available
 --
--- Hint! you can use the function fromIntegral to convert the list
--- length to a Fractional
+-- Hint! you can use the function fromIntegral to convert
+-- the list length to a Fractional
 
 average :: Fractional a => [a] -> a
-average xs = undefined
+average xs =
+    sum xs / (fromIntegral $ length xs)
 
 -- Ex 6: define an Eq instance for the type Foo below.
 
