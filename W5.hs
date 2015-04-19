@@ -67,8 +67,12 @@ allEqual (x:xs) = ae x xs where
 -- secondSmallest [1,1] ==>  Just 1
 -- secondSmallest [5,3,7,2,3,1]  ==>  Just 2
 
+-- soln: minimum vs sort
+
 secondSmallest :: Ord a => [a] -> Maybe a
-secondSmallest xs = undefined
+secondSmallest xs =
+    if length xs <= 1 then Nothing
+    else Just $ head $ tail $ sort xs
 
 -- Ex 4: find how two lists differ from each other. If they have
 -- different lengths, return
