@@ -33,8 +33,8 @@ x %$ y = x ++ y ++ x
 (*!) :: Int -> a -> [a]
 n *! val = replicate n val
 
--- Ex 2: implement the function allEqual which returns True if all
--- values in the list are equal.
+-- Ex 2: implement the function allEqual which returns True
+-- if all values in the list are equal.
 --
 -- Examples:
 --
@@ -42,8 +42,9 @@ n *! val = replicate n val
 -- allEqual [1,2,3] ==> False
 -- allEqual [1,1,1] ==> True
 --
--- PS. check out the error message you get with your implementation if
--- you remove the Eq a => constraint from the type!
+-- PS. check out the error message you get with your
+-- implementation if you remove the Eq a => constraint from
+-- the type!
 
 allEqual :: Eq a => [a] -> Bool
 allEqual xs = undefined
