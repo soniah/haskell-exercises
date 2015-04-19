@@ -142,7 +142,8 @@ instance Ord Foo where
   compare Bar Xyzzy = LT
   compare _ _ = GT
 
--- Ex 8: here is a type for a 3d vector. Implement an Eq instance for it.
+-- Ex 8: here is a type for a 3d vector. Implement an Eq
+-- instance for it.
 
 data Vector = Vector Integer Integer Integer
   deriving Show
