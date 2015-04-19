@@ -46,8 +46,16 @@ n *! val = replicate n val
 -- implementation if you remove the Eq a => constraint from
 -- the type!
 
+-- soln: all function!
+-- allEqual (x:xs) = all (==x) xs
+
 allEqual :: Eq a => [a] -> Bool
-allEqual xs = undefined
+allEqual [] = True
+allEqual (x:xs) = ae x xs where
+    ae y [] = True
+    ae y (z:zs) = if y == z
+        then ae z zs
+        else False
 
 -- Ex 3: implement the function secondSmallest that returns the second
 -- smallest value in the list, or Nothing if there is no such value.
