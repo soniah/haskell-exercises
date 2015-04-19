@@ -128,13 +128,19 @@ instance Eq Foo where
     Xyzzy == Xyzzy = True
     _ == _ = False
 
--- Ex 7: implement an Ord instance for Foo so that Quux < Bar < Xyzzy
+-- Ex 7: implement an Ord instance for Foo so that
+-- Quux < Bar < Xyzzy
+
+-- minimal Ord implements compare or <=
+-- soln uses <=, which is more compact
 
 instance Ord Foo where
-  compare = error "implement me?"
-  (<=) = error "and me?"
-  min = error "and me?"
-  max = error "and me?"
+  compare Quux  Quux  = EQ
+  compare Bar   Bar   = EQ
+  compare Xyzzy Xyzzy = EQ
+  compare Quux Bar = LT
+  compare Bar Xyzzy = LT
+  compare _ _ = GT
 
 -- Ex 8: here is a type for a 3d vector. Implement an Eq instance for it.
 
