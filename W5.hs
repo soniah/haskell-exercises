@@ -204,11 +204,20 @@ freqs xs =
 -- Ex 11: implement an Eq instance for the following binary
 -- tree type
 
+-- soln: more succinct, using _
+-- _ == _ = False
+
 data ITree = ILeaf | INode Int ITree ITree
   deriving Show
 
 instance Eq ITree where
-  (==) = error "implement me"
+    ILeaf == ILeaf = True
+    INode x1 l1 r1 == ILeaf = False
+    ILeaf == INode x2 l2 r2 = False
+    INode x1 l1 r1 == INode x2 l2 r2 =
+        x1 == x2 &&
+        l1 == l2 &&
+        r1 == r2
 
 -- Ex 12: here is a list type parameterized over the type it
 -- contains.  Implement an instance "Eq a => Eq (List a)" that
