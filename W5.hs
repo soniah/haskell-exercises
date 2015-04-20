@@ -167,7 +167,22 @@ instance Eq Vector where
 -- abs (Vector (-1) 2 (-3))    ==> Vector 1 2 3
 -- signum (Vector (-1) 2 (-3)) ==> Vector (-1) 1 (-1)
 
+-- Minimal complete definition:
+-- (+), (*), abs, signum, fromInteger, (negate | (-))
+
 instance Num Vector where
+  (Vector p q r) + (Vector x y z) =
+    Vector (p+x) (q+y) (r+z)
+  (Vector p q r) * (Vector x y z) =
+    Vector (p*x) (q*y) (r*z)
+  abs (Vector x y z) =
+    Vector (abs x) (abs y) (abs z)
+  signum (Vector x y z) =
+    Vector (signum x) (signum y) (signum z)
+  fromInteger x =
+    Vector x x x
+  negate (Vector x y z) =
+    Vector (negate x) (negate y) (negate z)
 
 -- Ex 10: compute how many times each value in the list occurs. Return
 -- the frequencies as a list of (frequency,value) pairs.
