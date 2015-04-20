@@ -184,7 +184,7 @@ instance Num Vector where
   negate (Vector x y z) =
     Vector (negate x) (negate y) (negate z)
 
--- Ex 10: compute how many times each value in the list
+-- Ex 10: compute how many times each value in a list
 -- occurs. Return the frequencies as a list of
 -- (frequency,value) pairs.
 --
@@ -194,8 +194,12 @@ instance Num Vector where
 -- freqs [False,False,False,True]
 --   ==> [(3,False),(1,True)]
 
-freqs :: Eq a => [a] -> [(Int,a)]
-freqs xs = undefined
+-- adding "Ord a" - cheating?
+
+freqs :: (Eq a, Ord a) => [a] -> [(Int,a)]
+freqs xs =
+    let foo = \x -> (length x, head x)
+    in map foo $ group $ sort xs
 
 -- Ex 11: implement an Eq instance for the following binary
 -- tree type
