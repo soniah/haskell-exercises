@@ -157,7 +157,8 @@ instance Eq Vector where
 -- Ex 9: implementa Num instance for Vector such that all the
 -- arithmetic operations work componentwise.
 --
--- You should probably check the docs for which methods Num has!
+-- You should probably check the docs for which methods Num
+-- has!
 --
 -- Examples:
 --
