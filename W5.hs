@@ -148,8 +148,11 @@ instance Ord Foo where
 data Vector = Vector Integer Integer Integer
   deriving Show
 
+-- could also do this by 'deriving (Eq,Show)'
+
 instance Eq Vector where
-  (==) = error "implement me"
+  (Vector p q r) == (Vector x y z) =
+    (p == x) && (q == y) && (r == z)
 
 -- Ex 9: implementa Num instance for Vector such that all the
 -- arithmetic operations work componentwise.
