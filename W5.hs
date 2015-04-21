@@ -242,7 +242,7 @@ instance Eq a => Eq (List a) where
 --   incrementAll (Just 3.0)  ==>  Just 4.0
 
 incrementAll :: (Functor f, Num n) => f n -> f n
-incrementAll x = undefined
+incrementAll x = fmap (+1) x
 
 -- Ex 14: below you'll find a type Result that works a bit
 -- like Maybe, but there are two different types of
