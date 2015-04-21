@@ -264,6 +264,8 @@ instance Functor Result where
 -- datatype List from ex 11)
 
 instance Functor List where
+    fmap _ Empty        = Empty
+    fmap f (LNode x l)  = LNode (f x) (fmap f l)
 
 -- Ex 16: Fun a is a type that wraps a function Int -> a.
 -- Implement a Functor instance for it.
