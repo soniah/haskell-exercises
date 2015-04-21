@@ -253,8 +253,12 @@ incrementAll x = fmap (+1) x
 data Result a = MkResult a | NoResult | Failure String
   deriving (Show,Eq)
 
+-- soln: use _'s for f for NoResult, Failure
+
 instance Functor Result where
-  fmap f result = error "implement me"
+    fmap f NoResult     = NoResult
+    fmap f (Failure x)  = Failure x
+    fmap f (MkResult x) = MkResult (f x)
 
 -- Ex 15: Implement the instance Functor List (for the
 -- datatype List from ex 11)
