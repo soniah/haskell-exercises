@@ -140,6 +140,7 @@ instance Ord Foo where
   compare Xyzzy Xyzzy = EQ
   compare Quux Bar = LT
   compare Bar Xyzzy = LT
+  compare Quux Xyzzy = LT
   compare _ _ = GT
 
 -- Ex 8: here is a type for a 3d vector. Implement an Eq
