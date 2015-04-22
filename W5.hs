@@ -279,6 +279,14 @@ runFun :: Fun a -> Int -> a
 runFun (Fun f) x = f x
 
 instance Functor Fun where
+    fmap g (Fun f) = Fun (g . f)
+
+-- taken from the definition of Functor:
+-- class Functor f where
+--   fmap :: (a -> b) -> f a -> f b
+--
+--   g          is      (a -> b)
+--   Fun f      is      f a
 
 -- Ex 17: this and the next exercise serve as an introduction
 -- for the next week.
