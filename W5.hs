@@ -353,4 +353,11 @@ data Tree a = Leaf | Node a (Tree a) (Tree a)
   deriving Show
 
 randomizeTree :: (Random a, RandomGen g) => Tree b -> g -> (Tree a,g)
-randomizeTree t g = undefined
+-- randomizeTree t g = undefined
+
+randomizeTree Leaf g = (Leaf, g)
+randomizeTree (Node _ t1 t2) g =
+    let (x', g1) = random g
+        (t1', g2) = randomizeTree t1 g1
+        (t2', g3) = randomizeTree t2 g2
+    in ((Node x' t1' t2'), g3)
