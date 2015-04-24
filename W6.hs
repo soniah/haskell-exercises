@@ -232,9 +232,30 @@ productLog (x:xs) = do
 
 -- Try running e.g. productLog [1,2,3] in GHCi!
 
+-- soln: >> in order to not use do
+--
+-- (>>=) :: forall a b. m a -> (a -> m b) -> m b
+-- Sequentially compose two actions, passing any value
+-- produced by the first as an argument to the second.
+--
+-- (>>) :: forall a b. m a -> m b -> m b
+-- Sequentially compose two actions, discarding any value
+-- produced by the first, like sequencing operators (such as
+-- the semicolon) in imperative languages.
+
 -- Implement this:
 binom :: Integer -> Integer -> Logger Integer
-binom n k = undefined
+binom n 0 = do
+    msg ("B(" ++ show n ++ ",0)")
+    return 1
+binom 0 k = do
+    msg ("B(0," ++ show k ++ ")")
+    return 0
+binom n k = do
+    v1 <- binom (n-1) (k-1)
+    v2 <- binom (n-1) k
+    msg ("B(" ++ show n ++ "," ++ show k ++ ")")
+    return $ v1 + v2
 
 -- Ex 5: using the State monad, write the operation update
 -- that first multiplies the state by 2 and then adds one to
