@@ -131,8 +131,16 @@ checkCapitals (s1,s2) =
 --  myTake (Just 4) (Just [5,6,7])
 --    ==> Nothing
 
+-- soln: when (!!). Also unless, guard.
+
 myTake :: Maybe Int -> Maybe [a] -> Maybe [a]
-myTake mi ml = undefined
+myTake mi ml = do
+    i <- mi
+    l <- ml
+    if length l >= i then
+        return $ take i l
+    else
+        Nothing
 
 -- Ex 3: given a list of indices and a list of values, return
 -- the sum of the values in the given indices. You should fail
