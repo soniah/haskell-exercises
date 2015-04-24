@@ -159,8 +159,25 @@ myTake mi ml = do
 --  selectSum [0..10] [4,6,9,20]
 --    Nothing
 
+-- soln:
+-- mapM     :: Monad m  => (a -> m b) -> [a] -> m [b]
+-- liftM    :: Monad m  => (a1 -> r) -> m a1 -> m r
+-- sum      :: Num a    => [a] -> a
+-- selectSum xs is = liftM sum $ mapM (safeIndex xs) is
+
 selectSum :: Num a => [a] -> [Int] -> Maybe a
-selectSum xs is = undefined
+selectSum _ [] = Just 0
+selectSum xs (i:is) = do
+    val <- safeIndex xs i
+    sum <- selectSum xs is
+    return (val + sum)
+
+-- !! is zero-based, length isn't
+safeIndex :: [a] -> Int -> Maybe a
+safeIndex xs n =
+    if (n < length xs) && (n >= 0)
+        then Just(xs!!n)
+        else Nothing
 
 -- Ex 4: below you'll find the implementation of a Logger
 -- monad and some examples of its use.
