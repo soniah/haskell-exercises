@@ -72,20 +72,42 @@ readNames s =
 -- (NB! There are obviously other corner cases like the inputs
 -- " " and "a b c", but you don't need to worry about those
 -- here)
+
+-- soln: break - Prelude, 'Sublists'
+-- soln: case + pattern matching!!!
+
 split :: String -> Maybe (String,String)
-split s = undefined
+split s =
+    if (length $ filter isSpace s) > 0 then
+        let w1 = takeWhile (not . isSpace) s
+            w2 = tail $ dropWhile (not . isSpace) s
+        in Just (w1, w2)
+    else
+        Nothing
 
 -- checkNumber should take a pair of two strings and return
 -- then unchanged if they don't contain numbers. Otherwise
 -- Nothing is returned.
+
+-- soln: all (and any)
+
 checkNumber :: (String, String) -> Maybe (String, String)
-checkNumber (for,sur) = undefined
+checkNumber (s1,s2) =
+    let hasN s = (length $ filter isDigit s) > 0
+    in  if (hasN s1) || (hasN s2) then Nothing
+        else Just (s1,s2)
 
 -- checkCapitals should take a pair of two strings and return
 -- them unchanged if both start with a capital letter.
 -- Otherwise Nothing is returned.
+
+-- soln: !! syntax for lists
+
 checkCapitals :: (String, String) -> Maybe (String, String)
-checkCapitals (for,sur) = undefined
+checkCapitals (s1,s2) =
+    let hasC s = (isUpper $ head s)
+    in  if (hasC s1) && (hasC s2) then Just (s1,s2)
+        else Nothing
 
 -- Ex 2: implement a function myTake that works just like
 -- take, but
