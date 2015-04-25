@@ -262,11 +262,13 @@ binom n k = do
 -- it. The state has type Int.
 --
 -- Example:
---  runState paivitys 3
+--  runState update 3
 --    ==> ((),7)
 
 update :: State Int ()
-update = undefined
+update = do
+    n <- get
+    put (n*2+1)
 
 -- Ex 6: using the State monad, walk through a list and
 -- increment the state by one each time a given element is
