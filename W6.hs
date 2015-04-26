@@ -300,11 +300,11 @@ lengthAndCount x (y:ys) = do
     return $ len + 1
 
 -- Ex 7: using a state of type [(a,Int)] we can keep track of
--- the numbers of occurrences of eleemnents of type a. For
+-- the numbers of occurrences of elements of type a. For
 -- instance [('a',1),('x',3)] means that we've seen one 'a'
 -- and three 'x's.
 --
--- Implement an State monad operation count that registers the
+-- Implement a State monad operation count that registers the
 -- occurrence of the given value.
 --
 -- Examples:
@@ -320,7 +320,7 @@ lengthAndCount x (y:ys) = do
 count :: Eq a => a -> State [(a,Int)] ()
 count x = return ()
 
--- Ex 8: goven a list of values, replace each value by a
+-- Ex 8: given a list of values, replace each value by a
 -- number saying which occurrence of the value this was in the
 -- list.
 --
