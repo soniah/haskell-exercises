@@ -368,7 +368,12 @@ safeDiv x 0.0 = Nothing
 safeDiv x y = Just (x/y)
 
 mapM2 :: Monad m => (a -> b -> m c) -> [a] -> [b] -> m [c]
-mapM2 op xs ys = undefined
+mapM2 op _  [] = do return []
+mapM2 op [] _  = do return []
+mapM2 op (x:xs) (y:ys) = do
+    hd <- op x y
+    tl <- mapM2 op xs ys
+    return (hd:tl)
 
 -- Ex 11: Funnykiztan has cities that are named with by
 -- 0..n-1. Some cities are connected by roads. Your task is to
