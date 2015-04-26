@@ -279,12 +279,25 @@ update = do
 -- lengthAndCount.  Do not use the functions length or filter.
 --
 -- Example:
---  runState (lengthAndCount True
---  [False,True,False,True,False]) 0
+--  runState (lengthAndCount True [False,True,False,True,False]) 0
 --    ==> (5,2)
 
+-- State Monad: initial state is set when calling! (eg 0 in
+-- above example). So no need to worry about it inside fn.
+-- `return x` when inside do sets the *result* not the
+-- *state*, use put to set *state*. In addition to get/put,
+-- there's also a `modify` function. Best doco is:
+--   https://wiki.haskell.org/State_Monad
+-- as other sources use "simplifications" that make learning
+-- difficult..
+
 lengthAndCount :: Eq a => a -> [a] -> State Int Int
-lengthAndCount x ys = undefined
+lengthAndCount x [] = do
+    return 0 -- empty list has length 0
+lengthAndCount x (y:ys) = do
+    len <- lengthAndCount x ys
+    when (x == y) (modify (+1))
+    return $ len + 1
 
 -- Ex 7: using a state of type [(a,Int)] we can keep track of
 -- the numbers of occurrences of eleemnents of type a. For
