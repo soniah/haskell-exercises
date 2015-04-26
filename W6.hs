@@ -317,8 +317,17 @@ lengthAndCount x (y:ys) = do
 --
 -- PS. Order of the list of pairs doesn't matter
 
+-- soln: can shrink by using better pattern matching in
+-- definition ie "reg a ((y,count):xs)"
+
 count :: Eq a => a -> State [(a,Int)] ()
-count x = return ()
+count x = do modify $ reg x
+
+reg :: Eq a => a -> [(a,Int)] -> [(a,Int)]
+reg a [] = [(a,1)]
+reg a (x:xs) = case x of
+    (y,count) | y == a  -> (y,count+1):xs
+    (y,count)           -> (y,count):(reg a xs)
 
 -- Ex 8: given a list of values, replace each value by a
 -- number saying which occurrence of the value this was in the
