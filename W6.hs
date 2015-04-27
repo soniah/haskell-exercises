@@ -3,6 +3,7 @@ module W6 where
 import Control.Monad
 import Control.Monad.State
 import Data.Char
+import Data.List
 
 -- Week 6: Monads
 --
@@ -481,10 +482,28 @@ example2 = [[1,2]
            ,[4]]
 
 routeExists :: [[Int]] -> Int -> Int -> Bool
+-- `execState` returns the final state ie a list of Ints.
+-- Initial state is an empty list.
 routeExists cities i j = j `elem` execState (dfs cities i) []
 
+-- procedure DFS(G,v):
+--   label v as discovered
+--   for all edges from v to w in G.adjacentEdges(v) do
+--     if vertex w is not labeled as discovered then
+--       recursively call DFS(G,w)
+
+-- soln: is more efficient - only does dfs on undiscovered
+-- cities. Code is almost procedural -
+-- "when (not (elem i discovered)) $ do ...
+
 dfs :: [[Int]] -> Int -> State [Int] ()
-dfs cities i = undefined
+dfs cities i = do
+    modify ((:) i)
+    modify (nub) -- remove dupes
+    let adjacent = cities !! i
+    discovered <- get
+    let unseen = adjacent \\ discovered
+    mapM_ (dfs cities) unseen
 
 -- Ex 12: define the function orderedPairs that returns all
 -- pairs (i,j) such that i<j and i occurs in the given list
