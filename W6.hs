@@ -345,7 +345,15 @@ reg a (x:xs) = case x of
 --    ==> ([1,2,1,2,3,3,1],[(5,3),(6,3),(7,1)])
 
 occurrences :: (Eq a) => [a] -> State [(a,Int)] [Int]
-occurrences xs = undefined
+occurrences [] = do
+    return []
+occurrences (x:xs) = do
+    count x
+    state <- get
+    -- x has been counted, so it *must* be in state
+    let Just hd = lookup x state
+    tl <- occurrences xs
+    return (hd:tl)
 
 -- Ex 9: implement the function ifM, that takes three monadic
 -- operations. If the first of the operations returns True,
