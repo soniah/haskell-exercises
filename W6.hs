@@ -417,7 +417,7 @@ mapM2 op (x:xs) (y:ys) = do
 --
 -- The road network is given as an adjacency list, which means
 -- a list of lists [[Int]] where the i'th list gives the
--- citices to wich city i has a road to.
+-- cities to which city i has a road to.
 --
 -- For example the road network:
 --
