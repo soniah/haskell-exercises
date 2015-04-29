@@ -544,7 +544,13 @@ orderedPairs xs = do
 --     ==> [7,3,5,1,6,2,4,0]
 
 sums :: [Int] -> [Int]
-sums xs = undefined
+sums [] = [0]
+sums (x:xs) = do
+    use <- [True,False]
+    s <- sums xs
+    if use
+        then return (x+s)
+        else return s
 
 -- Ex 14: the standard library defines the function
 --
