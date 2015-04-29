@@ -519,7 +519,13 @@ dfs cities i = do
 -- results
 
 orderedPairs :: [Int] -> [(Int,Int)]
-orderedPairs xs = undefined
+orderedPairs xs = do
+    let idxs = [0..((length xs)-1)]
+    ix <- idxs
+    iy <- idxs
+    guard $ ix < iy
+    guard $ (xs !! ix) < (xs !! iy)
+    return ((xs !! ix),(xs !! iy))
 
 -- Tehtävä 13: compute all possible sums of elements from the
 -- given list. Use the list monad.
