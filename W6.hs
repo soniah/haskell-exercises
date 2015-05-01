@@ -628,6 +628,11 @@ f2 acc x = do
 data Result a = MkResult a | NoResult | Failure String deriving (Show,Eq)
 
 instance Monad Result where
+    return x            = MkResult x
+    fail x              = Failure x
+    Failure r   >>= _   = Failure r
+    NoResult    >>= _   = NoResult
+    MkResult x  >>= f   = f x
 
 -- Ex 16: Here is the type SL that combines the State and
 -- Logger types. Implement an instance Monad SL, that behaves
