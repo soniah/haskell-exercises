@@ -576,8 +576,11 @@ sums (x:xs) = do
 sumBounded :: Int -> [Int] -> Maybe Int
 sumBounded k xs = foldM (f1 k) 0 xs
 
+-- soln: don't need do as no monadic ops used
+
 f1 :: Int -> Int -> Int -> Maybe Int
-f1 k acc x = undefined
+f1 k acc x = do
+    if (acc + x) > k then Nothing else Just (acc + x)
 
 -- sumNotTwice computes the sum of a list, but ignores
 -- duplicated elements.
@@ -590,8 +593,15 @@ f1 k acc x = undefined
 sumNotTwice :: [Int] -> Int
 sumNotTwice xs = fst $ runState (foldM f2 0 xs) []
 
+-- state will have list of 'seen', result will be accumulator
 f2 :: Int -> Int -> State [Int] Int
-f2 acc x = undefined
+f2 acc x = do
+    xs <- get
+    if x `elem` xs
+        then return acc
+        else do
+            modify ((:) x)
+            return $ x + acc
 
 -- Ex 15: here is the Result type from last week. Implement a
 -- Monad Result instance that behaves roughly like the Monad
