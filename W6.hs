@@ -676,3 +676,16 @@ modifySL :: (Int->Int) -> SL ()
 modifySL f = SL (\s -> ((),f s,[]))
 
 instance Monad SL where
+    return r        = SL (\s -> (r,s,[]))
+
+    -- >>= ::           m a -> (a -> m b) -> m b
+
+    -- 1) m a           Int -> (a,Int,[String])
+    -- 2) (a -> m b)    a -> Int -> (b,Int,[String])
+    -- 3) m b           Int -> (b,Int,[String])
+
+    (SL f) >>= g    = SL $ \s1 ->
+        let (r2,s2,m2) = f s1
+            SL h = g r2
+            (r3,s3,m3) = h s2
+        in (r3,s3,m2 ++ m3)
