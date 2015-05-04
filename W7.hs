@@ -24,7 +24,11 @@ import Control.Monad.State
 -- PS. you can test the the function like this in ghci: putStr (pyramidi 5)
 
 pyramid :: Int -> String
-pyramid n = undefined
+pyramid 1 = "*\n"
+pyramid n =
+    let leader = (concat $ replicate (n-1) " ") ++ "*\n"
+        xform = \s -> s ++ "**"
+    in leader ++ (unlines $ map xform $ lines (pyramid (n-1)))
 
 -- Ex 2: collect every second element from the given list.
 --
